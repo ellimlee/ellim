@@ -1,0 +1,75 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+/*    Reset CSS  */
+* { margin:0;  padding:0;}
+ol,ul { list-style: none; }
+a { outline:0; text-decoration:none;	color:#bbb;}
+img { border:0;}
+
+.wrap{position:fixed; width:100%; height:100%; min-width:1024px; min-height:768px; background:url(../img/bg.jpg) no-repeat center bottom; background-size:cover;}
+/* 풀스크린 작업을 할 때 가로 세로 스크롤이 생기지 않게 하기 위해 fixed로 설정한 뒤, min-width:1024px; min-height:768px;을 설정하여 화면을 줄일 때, 일정 넓이값과 높이값 이하로는 배경이미지가 줄어들지 않게 했다. */
+
+/* 로고 영역 */
+.wrap h1{position:fixed; width:300px; top:240px; left:0; text-align:center; line-height:0.8;}
+	.wrap h1 strong{font:bold 16px/1.1 verdana; color:#333;}
+	.wrap h1 img{width:200px; height:auto;}
+	.wrap h1 span{font:bold 12px/1.6 arial; color:#444; letter-spacing:5px;}
+
+/* 슬로건 영역 */
+.txt{position:fixed; top:400px; left:40px; font:30px/0.8 Raleway; color:#111; letter-spacing:0;}
+	.txt span{font-size:30px; color:#888;}
+
+/* 웹 아이콘 버튼 모음 */
+.sns{position:fixed; top:50px; right:50px; z-index:10;}
+	.sns li{float:left; margin-left:30px;}
+		.sns li a .fa{color:#555; font-size:22px; opacity:0.7; transition:all 0.5s;}
+		.sns li a:hover .fa{opacity:1; transform:scale(2); text-shadow:0 -1px 2px #fff, 0 0 4px #ccc, 0 -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80, 2px -19px 18px #f20;}
+
+/* section 영역 레이아웃 */
+section{position:fixed; top:0; left:0; width:100%; height:100%;}
+article{position:relative; width:12%; height:100%; background:url(../img/divider.png) no-repeat left center; float:right; overflow:hidden; /* border:1px solid red */}	/* float:right; -- 첫번째 article부터 오른쪽에 배치 */
+
+/* article 제목 */
+article h2{position:absolute; top:300px; left:50%; padding-left:15px; border-left:3px solid #555; font:bold 20px Raleway; color:#666; z-index:3; transition:all 0.2s;}
+article div{position:absolute; left:0; top:300px; width:100%; height:0; background:#000; opacity:0.5; z-index:2; transition:all 0.7s;}
+
+/* article 제목 호버 효과 */
+article:hover h2{color:#fff; border-left:3px solid #fff; left:20px;}
+article:hover div{top:270px; height:70px;}
+
+/* article 동영상 */
+article video{position:absolute; width:auto; height:100%; margin-top:0; margin-left:-100px; opacity:0; z-index:1;}
+/*
+	height:100%; 해당 동영상의 높이 값을 세로로 브라우저에 꽉 차도록
+	margin-left:-100px; 동영상의 위치를 왼쪽으로 100px만큼 당김
+	opacity:0; 투명도 0을 주어 화면에서 숨겨놓았다.
+*/
+
+/* article 숨겨진 콘텐츠 */
+article h3{position:absolute; bottom:210px; right:-310px; font:40px Raleway; color:#fff; text-align:right; opacity:1; z-index:4;}
+article p{position:absolute; bottom:50px; right:-310px; width:300px; height:150px; font:12px/1.5 arial; color:#fff; text-align:right; opacity:0.8; z-index:5;}
+/* right:-310px; 해당 영역 밖으로 숨겨놓았다. article p에 width:300px;와 height:150px; 을 주지 않으면 bottom:50px;에 의해 p 위쪽이 들쑥날쑥해진다. */
+
+/* footer */
+footer{position:fixed; width:100%; height:40px; left:0; bottom:0; background:#000; opacity:0.4;}
+
+/* 메뉴 1depth - 주 메뉴 */
+footer>ul{position:absolute; bottom:0; left:50px; width:100%; z-index:10;}
+	footer>ul>li{width:200px; height:40px; text-align:center; box-sizing:border-box; position:relative; perspective:700px; /* 메뉴 회전 시 필요 */ float:left;}
+		footer>ul>li>a{display:block; width:200px; height:40px; font:12px/4 orbitron; color:#aaa; transition:all 0.5s;}
+		footer>ul>li:hover>a{transform:translateY(-20px); color:#000; background-color:#fff; font:bold 16px;}
+		/* hover 시 투명도를 0으로 설정함과 동시에 translateY 속성을 이용해 위로 20만큼 살짝 올림 */
+
+/* 메뉴 2depth */
+footer li ul{position:absolute; left:0; bottom:-50px; width:200px; height:300px; background-color:rgba(0,0,0,0.6); border:1px solid #000; box-sizing:border-box; /* display:none; */ opacity:0; transition:all 0.5s; padding:10px;}
+footer li:hover ul{/* display:block; */ opacity:1; bottom:60px; transform:rotateY(360deg);}
+/*
+	display:none;과 75행에서 display:block;으로 메뉴를 숨기거나 나타나게 하면 메뉴가 회전하지 않는다.
+	opacity:0; opacity:1;을 이용해야 메뉴가 회전한다.
+*/
+
+footer a{display:block; width:100%; height:37px; border-top:1px solid #111; color:#ddd; text-align:center; font:11px/2.8 orbitron; color:#888; transition:all 0.4s;}
+footer a:hover{background:#000; color:#fff;}
+
+footer span{position:absolute; right:50px; bottom:0;}
